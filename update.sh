@@ -81,4 +81,4 @@ class ${CLASSNAME}${CLASS_POSTFIX} < Formula
     end
 end"
 
-echo "${TEMPLATE}" > "${CLI_NAME}${BREW_VERSION}.rb"
+echo "${TEMPLATE}" > "Formula/${CLI_NAME}${BREW_VERSION}.rb"

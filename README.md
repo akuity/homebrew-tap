@@ -16,38 +16,30 @@ brew uninstall akuity/tap/kargo
 brew untap akuity/tap
 ```
 
-## How to Update the Tap
+## How to Update the Homebrew Tap
 
-To update the tap for a new Kargo release
-
-Clone the tap repository:
+To update the Homebrew tap for a new release, use the `./update.sh` script with the following syntax:
 ```bash
-git clone https://github.com/akuity/homebrew-tap.git
-cd homebrew-tap
+./update.sh <binary-name> <version> [optional-versioned-formula]
 ```
 
-Use the `update.sh` script to update the formula:
-```bash
-./update.sh kargo <VERSION>
-```
-Replace `<VERSION>` with the new Kargo version. For example: `./update.sh kargo v1.0.0`
+### Examples
 
-Verify the updated formula:
+#### 1. Updating the main formula (no versioning):
+If you're releasing a new version without version-specific formulas, run:
 ```bash
-brew install --build-from-source ./kargo.rb
+./update.sh kargo v1.0.0
 ```
 
-Test the installation to ensure the correct version is installed:
+#### 2. Updating a versioned formula:
+For example, to create or update a versioned formula for `kargo` version 1.1, include the version suffix (`@<major.minor>`):
 ```bash
-kargo --version
+./update.sh kargo v1.1.0 @1.1
 ```
 
-Commit and push the changes:
-```bash
-git add kargo.rb
-git commit -m "Update Kargo formula to version <VERSION>"
-git push origin main
-```
+### Notes
+- **`<version>`**: The version of the release, prefixed with `v` (e.g., `v1.0.0`).
+- **`[optional-versioned-formula]`**: Used only if you're managing multiple versions of the binary (e.g., `@1.1` for version 1.1). If omitted, it updates the main formula.
 
 ## Documentation
 
